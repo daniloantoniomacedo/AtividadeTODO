@@ -12,7 +12,6 @@ public class Controller {
 	public static void main(String[] args) {
 		
 		Dao<Tarefa> dao = new Dao<Tarefa>();
-		dao.listaDeTarefas.add(new Tarefa("tarefa01", "Primeira tarefa", Situacao.CONCLUIDA));
 		Scanner scanner =  new Scanner(System.in);
 		View view = new View(dao, scanner);
 		Controller controller = new Controller();
