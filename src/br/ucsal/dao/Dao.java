@@ -2,7 +2,8 @@ package br.ucsal.dao;
 
 import java.util.ArrayList;
 
-import br.ucsal.model.Tarefa;
+import br.ucsal.model.Identificacao;
+
 
 public class Dao<T> {
 	
@@ -32,7 +33,7 @@ public class Dao<T> {
 	public T buscarTarefaPorTitulo(String buscaTitulo){ 
 		
 		for(T tarefa : listaDeTarefas) {
-			if(((Tarefa) tarefa).getTitulo().equals(buscaTitulo)) {
+			if(((Identificacao) tarefa).getIdentificacao().equals(buscaTitulo)) {
 				return tarefa;
 			}
 		}

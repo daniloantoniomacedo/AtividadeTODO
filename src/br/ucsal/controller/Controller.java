@@ -3,7 +3,6 @@ package br.ucsal.controller;
 import java.util.Scanner;
 
 import br.ucsal.dao.Dao;
-import br.ucsal.model.Situacao;
 import br.ucsal.model.Tarefa;
 import br.ucsal.view.View;
 
@@ -26,7 +25,7 @@ public class Controller {
 		switch (opcao) {
 		case 1: view.imprimirListaFormatada(); break;
 		case 2: 
-			Tarefa tarefa = new Tarefa(null, null, null);
+			Tarefa tarefa = new Tarefa();
 			view.criarNovaTarefa(tarefa); 
 			break;
 		case 3: view.editarTarefa(); break;

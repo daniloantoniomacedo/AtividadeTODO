@@ -1,11 +1,13 @@
 package br.ucsal.model;
 
-public class Tarefa {
+public class Tarefa implements Identificacao {
 	
 	private String titulo;
 	private String descricao;
 	private Situacao situacao;
-		
+	
+	public Tarefa() { }
+	
 	public Tarefa(String titulo, String descricao, Situacao situacao) {
 		this.titulo = titulo;
 		this.descricao = descricao;
@@ -34,6 +36,11 @@ public class Tarefa {
 	@Override
 	public String toString() {
 		return "Tarefa [titulo=" + titulo + ", descricao=" + descricao + ", situacao=" + situacao + "]";
+	}
+
+	@Override
+	public String getIdentificacao() {
+		return titulo;
 	}
 	
 	
