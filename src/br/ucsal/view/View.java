@@ -27,7 +27,7 @@ public class View {
 		try {
 			return validarRespostaUsuario(scanner.nextInt());
 		} catch (Exception e) {
-			System.out.print("\n Digite apenas números! Tente novamente. \n" + e.getStackTrace());
+			System.out.print("\n Digite apenas números! Programa Encerrado! \n");
 			return null;
 		}
 		
