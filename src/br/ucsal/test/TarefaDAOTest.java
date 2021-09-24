@@ -20,7 +20,7 @@ class TarefaDAOTest {
 	
 	@BeforeEach
 	void setUpBeforeClass() {
-		this.dao.listaDeTarefas.add(tarefa01);
+		this.dao.getListaDeTarefas().add(tarefa01);
 	}
 
 	@Test

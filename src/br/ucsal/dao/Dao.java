@@ -7,7 +7,7 @@ import br.ucsal.model.Identificacao;
 
 public class Dao<T> {
 	
-	public ArrayList<T> listaDeTarefas = new ArrayList<T>();
+	private ArrayList<T> listaDeTarefas = new ArrayList<T>();
 	
 	/**
 	 * Insere a tarefa passada como parametro na lista.
@@ -15,7 +15,7 @@ public class Dao<T> {
 	 * @return tarefa inserida
 	 */
 	public T inserirTarefa(T tarefa) { 
-		this.listaDeTarefas.add(tarefa); 
+		this.getListaDeTarefas().add(tarefa); 
 		return tarefa;
 	}
 	
@@ -23,7 +23,7 @@ public class Dao<T> {
 	 * Lista todas as tarefas da lista.
 	 * @return Lista de tarefas.
 	 */
-	public ArrayList<T> listarTarefas() { return this.listaDeTarefas; }
+	public ArrayList<T> listarTarefas() { return this.getListaDeTarefas(); }
 	
 	/**
 	 * Busca tarefa pelo titulo na lista. Caso a tarefa não seja encontrada, retorna null.
@@ -32,7 +32,7 @@ public class Dao<T> {
 	 */
 	public T buscarTarefaPorTitulo(String buscaTitulo){ 
 		
-		for(T tarefa : listaDeTarefas) {
+		for(T tarefa : getListaDeTarefas()) {
 			if(((Identificacao) tarefa).getIdentificacao().equals(buscaTitulo)) {
 				return tarefa;
 			}
@@ -52,7 +52,7 @@ public class Dao<T> {
 		T tarefaAntiga = buscarTarefaPorTitulo(nomeDaTarefaAntiga);
 		
 		if(tarefaAntiga != null) {
-			this.listaDeTarefas.set(listaDeTarefas.indexOf(tarefaAntiga), tarefaNova); 
+			this.getListaDeTarefas().set(getListaDeTarefas().indexOf(tarefaAntiga), tarefaNova); 
 			return tarefaNova;
 		}else{
 			return null;
@@ -70,13 +70,16 @@ public class Dao<T> {
 		T tarefaDeletar = buscarTarefaPorTitulo(nomeDaTarefa);
 		
 		try {
-			this.listaDeTarefas.remove(listaDeTarefas.indexOf(tarefaDeletar));
+			this.getListaDeTarefas().remove(getListaDeTarefas().indexOf(tarefaDeletar));
 			return tarefaDeletar;
 		} catch (Exception e) {
 			return null;
 		}
 		
 	}
-	
+
+	public ArrayList<T> getListaDeTarefas() {
+		return listaDeTarefas;
+	}	
 
 }
