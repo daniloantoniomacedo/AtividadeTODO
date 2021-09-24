@@ -15,7 +15,7 @@ public class Dao<T> {
 	 * @return tarefa inserida
 	 */
 	public T inserirTarefa(T tarefa) { 
-		this.getListaDeTarefas().add(tarefa); 
+		this.listaDeTarefas.add(tarefa); 
 		return tarefa;
 	}
 	
@@ -23,7 +23,7 @@ public class Dao<T> {
 	 * Lista todas as tarefas da lista.
 	 * @return Lista de tarefas.
 	 */
-	public ArrayList<T> listarTarefas() { return this.getListaDeTarefas(); }
+	public ArrayList<T> listarTarefas() { return this.listaDeTarefas; }
 	
 	/**
 	 * Busca tarefa pelo titulo na lista. Caso a tarefa não seja encontrada, retorna null.
@@ -32,7 +32,7 @@ public class Dao<T> {
 	 */
 	public T buscarTarefaPorTitulo(String buscaTitulo){ 
 		
-		for(T tarefa : getListaDeTarefas()) {
+		for(T tarefa : this.listaDeTarefas) {
 			if(((Identificacao) tarefa).getIdentificacao().equals(buscaTitulo)) {
 				return tarefa;
 			}
@@ -52,7 +52,7 @@ public class Dao<T> {
 		T tarefaAntiga = buscarTarefaPorTitulo(nomeDaTarefaAntiga);
 		
 		if(tarefaAntiga != null) {
-			this.getListaDeTarefas().set(getListaDeTarefas().indexOf(tarefaAntiga), tarefaNova); 
+			this.listaDeTarefas.set(this.listaDeTarefas.indexOf(tarefaAntiga), tarefaNova); 
 			return tarefaNova;
 		}else{
 			return null;
@@ -69,10 +69,10 @@ public class Dao<T> {
 		
 		T tarefaDeletar = buscarTarefaPorTitulo(nomeDaTarefa);
 		
-		try {
-			this.getListaDeTarefas().remove(getListaDeTarefas().indexOf(tarefaDeletar));
+		if(tarefaDeletar != null) {
+			this.listaDeTarefas.remove(this.listaDeTarefas.indexOf(tarefaDeletar));
 			return tarefaDeletar;
-		} catch (Exception e) {
+		}else{
 			return null;
 		}
 		
